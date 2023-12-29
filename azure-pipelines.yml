@@ -5,8 +5,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo setting up AWS EC2
-  displayName: 'Setting up aws ec2'
 - task: DownloadSecureFile@1
   name: aws_key_pair
   displayName: 'Download AWS key pair'
@@ -20,15 +18,15 @@ steps:
     TargetFolder: '$(HOME)'
 
 - script: ls $HOME
-# - task: TerraformTaskV1@0
-#   inputs:
-#     provider: 'aws'
-#     command: 'init'
-#     backendServiceAWS: 'aws-terraform'
-#     backendAWSBucketName: 'terraform-backend-state'
-#     backendAWSKey: 'kubernetes-dev.tfstate'
-# - task: TerraformTaskV1@0
-#   inputs:
-#     provider: 'aws'
-#     command: 'apply'
-#     environmentServiceNameAWS: 'aws-terraform'
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'aws'
+    command: 'init'
+    backendServiceAWS: 'aws-terraform'
+    backendAWSBucketName: 'terraform-backend-state'
+    backendAWSKey: 'kubernetes-dev.tfstate'
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    environmentServiceNameAWS: 'aws-terraform'
