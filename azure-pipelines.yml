@@ -17,9 +17,9 @@ steps:
   inputs:
     SourceFolder: '$(Agent.TempDirectory)'
     Contents: '**/*.pem'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    TargetFolder: '$(HOME)'
 
-- script: echo $HOME
+- script: ls $HOME
 # - task: TerraformTaskV1@0
 #   inputs:
 #     provider: 'aws'
