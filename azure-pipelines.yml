@@ -7,15 +7,29 @@ pool:
 steps:
 - script: echo setting up AWS EC2
   displayName: 'Setting up aws ec2'
-- task: TerraformTaskV1@0
+- task: DownloadSecureFile@1
+  name: aws_key_pair
+  displayName: 'Download AWS key pair'
   inputs:
-    provider: 'aws'
-    command: 'init'
-    backendServiceAWS: 'aws-terraform'
-    backendAWSBucketName: 'terraform-backend-state'
-    backendAWSKey: 'kubernetes-dev.tfstate'
-- task: TerraformTaskV1@0
+    secureFile: 'administrator'
+
+- script: mkdir ~/aws/aws_keys
+- task: CopyFiles@2
   inputs:
-    provider: 'aws'
-    command: 'apply'
-    environmentServiceNameAWS: 'aws-terraform'
+    SourceFolder: '$(Agent.TempDirectory)'
+    Contents: administrator
+    TargetFolder: ~/aws/aws_keys
+
+- script: ls
+# - task: TerraformTaskV1@0
+#   inputs:
+#     provider: 'aws'
+#     command: 'init'
+#     backendServiceAWS: 'aws-terraform'
+#     backendAWSBucketName: 'terraform-backend-state'
+#     backendAWSKey: 'kubernetes-dev.tfstate'
+# - task: TerraformTaskV1@0
+#   inputs:
+#     provider: 'aws'
+#     command: 'apply'
+#     environmentServiceNameAWS: 'aws-terraform'
