@@ -13,7 +13,7 @@ steps:
   inputs:
     secureFile: 'administrator.pem'
 
-- script: mkdir ~/aws/aws_keys
+- script: sudo mkdir ~/aws/aws_keys
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.TempDirectory)'
