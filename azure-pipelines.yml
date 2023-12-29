@@ -11,13 +11,13 @@ steps:
   name: aws_key_pair
   displayName: 'Download AWS key pair'
   inputs:
-    secureFile: 'administrator'
+    secureFile: 'administrator.pem'
 
 - script: mkdir ~/aws/aws_keys
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.TempDirectory)'
-    Contents: administrator
+    Contents: secureFile
     TargetFolder: ~/aws/aws_keys
 
 - script: ls
