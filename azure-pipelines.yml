@@ -19,7 +19,7 @@ steps:
     Contents: '**/*.pem'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- script: ls '$(Build.ArtifactStagingDirectory)'
+- script: echo $HOME
 # - task: TerraformTaskV1@0
 #   inputs:
 #     provider: 'aws'
