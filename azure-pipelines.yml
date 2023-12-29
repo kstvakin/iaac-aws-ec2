@@ -11,13 +11,11 @@ steps:
   inputs:
     provider: 'aws'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
-    backendServiceAWS: 'aws-for-terraform'
+    backendServiceAWS: 'aws-terraform'
     backendAWSBucketName: 'terraform-backend-state'
     backendAWSKey: 'kubernetes-dev.tfstate'
 - task: TerraformTaskV1@0
   inputs:
     provider: 'aws'
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
-    environmentServiceNameAWS: 'aws-for-terraform'
+    environmentServiceNameAWS: 'aws-terraform'
