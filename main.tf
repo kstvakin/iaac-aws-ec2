@@ -39,10 +39,21 @@ resource "aws_instance" "http_server" {
   key_name               = "administrator"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.http_server_sg.id]
-  for_each  = toset(data.aws_subnets.default_subnets.ids)
-  subnet_id = each.value
+  subnet_id              = data.aws_subnets.default_subnets.ids[0]
 
-  tags = {
-    name : "http_servers_${each.value}"
-  }
+//  connection {
+//    type        = "ssh"
+//    host        = self.public_ip
+//    user        = "ec2-user"
+//    private_key = file(var.aws_key_pair)
+//  }
+//
+//    provisioner "remote-exec" {
+//      inline = [
+//        "sudo yum install docker -y",
+//        "sudo systemctl enable docker",
+//        "sudo systemctl start docker",
+////        "sudo docker run -p 80:3000 kstvakin/onboarding-app-devops:25"
+//      ]
+//    }
 }
