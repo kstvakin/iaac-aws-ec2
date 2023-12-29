@@ -13,14 +13,13 @@ steps:
   inputs:
     secureFile: 'administrator.pem'
 
-- script: sudo mkdir ~/aws/aws_keys
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.TempDirectory)'
-    Contents: secureFile
-    TargetFolder: ~/aws/aws_keys
+    Contents: '**/*.pem'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- script: ls
+- script: ls '$(Build.ArtifactStagingDirectory)'
 # - task: TerraformTaskV1@0
 #   inputs:
 #     provider: 'aws'
