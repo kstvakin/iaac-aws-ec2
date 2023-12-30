@@ -48,12 +48,13 @@ resource "aws_instance" "http_server" {
     private_key = file(var.aws_key_pair)
   }
 
-    provisioner "remote-exec" {
-      inline = [
-        "sudo yum install docker -y",
-        "sudo systemctl enable docker",
-        "sudo systemctl start docker",
-//        "sudo docker run -p 80:3000 kstvakin/onboarding-app-devops:25"
-      ]
-    }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum install docker -y",
+      "sudo systemctl enable docker",
+      "sudo systemctl start docker",
+      "sudo usermod -a -G docker $USER",
+      "sudo su"
+    ]
+  }
 }
