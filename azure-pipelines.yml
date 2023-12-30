@@ -17,7 +17,6 @@ steps:
     Contents: '**/*.pem'
     TargetFolder: '$(HOME)'
 
-- script: ls $HOME
 - task: TerraformTaskV1@0
   inputs:
     provider: 'aws'
