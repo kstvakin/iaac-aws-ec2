@@ -14,7 +14,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.TempDirectory)'
-    Contents: '**/*.pem'
+    Contents: '**/administrator.pem'
     TargetFolder: '$(HOME)'
 
 - task: TerraformTaskV1@0
