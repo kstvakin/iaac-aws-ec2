@@ -27,5 +27,5 @@ steps:
 - task: TerraformTaskV1@0
   inputs:
     provider: 'aws'
-    command: 'apply'
+    command: 'destroy'
     environmentServiceNameAWS: 'aws-terraform'
