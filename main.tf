@@ -61,8 +61,7 @@ resource "aws_instance" "http_server" {
       "sudo systemctl enable docker",
       "sudo systemctl start docker",
       "sudo usermod -a -G docker $USER",
-      "sudo su",
-      "docker swarm init"
+      "sudo su"
     ]
   }
 }
