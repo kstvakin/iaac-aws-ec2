@@ -1,3 +1,3 @@
 variable "aws_key_pair" {
-  default = "~/administrator.pem"
+  default = "~/aws/aws_keys/administrator.pem"
 }

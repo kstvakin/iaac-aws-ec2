@@ -1,0 +1,2 @@
+[prod]
+prod ansible_host=3.147.52.226

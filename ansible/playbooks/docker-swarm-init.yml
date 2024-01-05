@@ -1,0 +1,6 @@
+---
+- hosts: prod
+  become: true
+  tasks:
+    - raw: "sudo usermod -a -G docker $USER"
+    - raw: "sudo docker swarm init"

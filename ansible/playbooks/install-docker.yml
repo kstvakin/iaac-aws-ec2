@@ -1,0 +1,9 @@
+---
+- hosts: prod
+  become: true
+  tasks:
+    - yum:
+        name:
+          - docker
+        state: present
+    - service: name=docker state=started enabled=yes
